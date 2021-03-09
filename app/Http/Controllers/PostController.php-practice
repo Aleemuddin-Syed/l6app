@@ -1,0 +1,127 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Requests\PostStoreRequest;
+use App\Models\Post;
+use Illuminate\Support\Facades\DB;
+
+class PostController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        //echo $request->path();
+        //echo $request->url();
+        //echo $request->fullurl();
+        //echo $request->method();
+        //$post = new Post();
+        $data = [
+            'title' => 'Post Model Return',
+            'content' => "Description Post Models"
+        ];
+        /*$sql = DB::insert("INSERT INTO profiles(`user_id`,`mobile`,`city`,`country`) VALUES(:user_id,:mobile,:city,:country)",[
+            'user_id'=>2,
+            'mobile'=>9028102181,
+            'city'=>'Akola',
+            'country'=>'India'
+        ]);*/
+        // $sql = DB::update("UPDATE profiles SET `mobile`=9156946110 where `id`=:id",['id'=>1]);
+        // $sql = DB::select("SELECT * FROM profile WHERE id=?",[1]);
+        //$sql = DB::select("SELECT * FROM profile WHERE id=:id",['id'=>1]);
+        //$sql = DB::delete("DELETE FROM profile WHERE id=:id",['id'=>1]);
+
+        //dd($sql);
+        return view('posts.index', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    //public function store(Request $request)
+    public function store(PostStoreRequest $request)
+    {
+        //$data = $request->all();
+        //$data = $request->input('title');
+        //$data = $request->input('check.0');
+        //$data = $request->has('title');
+        //$data = $request->filled('title');
+        //return $request->file('photo')->getClientOriginalName();
+        //return $request->file('photo')->store('images','public');
+        //return $request->file('photo')->storeAs('images','logo.png','public');
+        //$folder = strtolower(pathinfo($request->file('photo')->getClientOriginalName(), PATHINFO_FILENAME)). '-'.random_int(1, 999);        
+        //return $request->file('photo')->storeAs($folder,'profile.jpg','public');
+        
+        // $request->validate([
+        //     'title' => 'required',
+        //     'content' => 'required',
+        //     'photo' => 'required',
+        // ]);
+        return back()->withInput();
+        //dd($data);
+        //return view('posts.index',compact('data'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}
